@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="te-micoserver-web:war">
+    <output-path>$PROJECT_DIR$/te-micoserver-web/target</output-path>
+    <root id="archive" name="te-micoserver-web.war">
+      <element id="artifact" artifact-name="te-micoserver-web:war exploded" />
+    </root>
+  </artifact>
+</component>

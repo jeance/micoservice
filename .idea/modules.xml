@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver.iml" filepath="$PROJECT_DIR$/te-micoserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver-common/te-micoserver-common.iml" filepath="$PROJECT_DIR$/te-micoserver-common/te-micoserver-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver-model/te-micoserver-model.iml" filepath="$PROJECT_DIR$/te-micoserver-model/te-micoserver-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver-serviceagent/te-micoserver-serviceagent.iml" filepath="$PROJECT_DIR$/te-micoserver-serviceagent/te-micoserver-serviceagent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver-web/te-micoserver-web.iml" filepath="$PROJECT_DIR$/te-micoserver-web/te-micoserver-web.iml" />
+    </modules>
+  </component>
+</project>
