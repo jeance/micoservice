@@ -7,7 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="te-micoserver-common" />
+        <module name="te-micoserver-dao" />
         <module name="te-micoserver-model" />
+        <module name="te-micoserver-service" />
         <module name="te-micoserver-serviceagent" />
         <module name="te-micoserver-web" />
         <module name="te-micserver-service" />
@@ -17,7 +19,9 @@
     <bytecodeTargetLevel target="1.8">
       <module name="te-micoserver" target="1.8" />
       <module name="te-micoserver-common" target="1.8" />
+      <module name="te-micoserver-dao" target="1.8" />
       <module name="te-micoserver-model" target="1.8" />
+      <module name="te-micoserver-service" target="1.8" />
       <module name="te-micoserver-serviceagent" target="1.8" />
       <module name="te-micoserver-servicesdk" target="1.8" />
       <module name="te-micoserver-web" target="1.8" />

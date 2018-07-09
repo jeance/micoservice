@@ -49,7 +49,6 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/te-micoserver-service/pom.xml" />
         <option value="$PROJECT_DIR$/te-micoserver-servicesdk/pom.xml" />
       </set>
     </option>

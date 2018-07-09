@@ -7,6 +7,9 @@
           <element id="module-output" name="te-micoserver-web" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.10" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
@@ -41,6 +44,15 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" />
           <element id="archive" name="te-micoserver-model-1.0-SNAPSHOT.jar">
             <element id="module-output" name="te-micoserver-model" />
+          </element>
+          <element id="archive" name="te-micoserver-dao-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="te-micoserver-dao" />
+          </element>
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.8" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
+          <element id="archive" name="te-micoserver-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="te-micoserver-service" />
           </element>
         </element>
       </element>

@@ -3,4 +3,33 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置库-->
+    <bean id="sys" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <!--<property name="url" value="jdbc:mysql://10.100.38.182:3096/tequeue"/>-->
+        <!--<property name="username" value="tequeue"/>-->
+        <!--<property name="password" value="Oy34ljZtFPWhLS6FU0dNXb"/>-->
+        <property name="url" value="jdbc:mysql://140.143.16.223:3306/sys"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+        <!--<property name="initialSize" value="5"/>-->
+        <!--<property name="minIdle" value="3"/>-->
+        <!--<property name="maxActive" value="50"/>-->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="1"/>
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000"/>-->
+    </bean>
+    <bean id="sqlSessionFactorySys" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="sys"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath*:mysql/sys/*Mapper.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.te.micoservice.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactorySys"/>
+    </bean>
 </beans>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="tepayment" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+       <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.100.38.188:3090/TEPaymentConfg"
+                        userId="TEPaymentConfg"
+                        password="VtSDBPT7PK2xbIqKH1YL6h">
+        </jdbcConnection>-->
+
+        <!--配置库-->
+       <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.100.38.188:3090/tepaymentconfig"
+                        userId="tepaymentconfig"
+                        password="tS60AIWxlZkELgi6gFism78">
+        </jdbcConnection>-->
+        <!--数据中心库 tidb-->
+       <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.100.41.111:4010/TEPaymentDataCenter"
+                        userId="TEPaymentDataCenter"
+                        password="M8DKyBOdXC21ky14JIE1">
+        </jdbcConnection>-->
+        <!--队列库 tequeue-->
+       <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://140.143.16.223:3306/sys"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.te.micoservice.model"
+                            targetProject="../te-micoserver-model/src/main/java">
+            <property name="enableCountByExample" value="false"/>
+            <property name="enableUpdateByExample" value="false"/>
+            <property name="enableDeleteByExample" value="false"/>
+            <property name="enableSelectByExample" value="false"/>
+            <property name="selectByExampleQueryId" value="false"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mysql.sys" targetProject="src/main/resources">
+            <property name="trimStrings" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.te.micoservice.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="micoServiceRegistry"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
