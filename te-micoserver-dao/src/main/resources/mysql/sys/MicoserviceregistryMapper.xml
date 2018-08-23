@@ -11,10 +11,12 @@
     <result column="createdTime" jdbcType="DATE" property="createdtime" />
     <result column="updatedTime" jdbcType="DATE" property="updatedtime" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="msrServiceMethod" jdbcType="VARCHAR" property="msrservicemethod" />
+    <result column="msrServicePort" jdbcType="INTEGER" property="msrserviceport" />
   </resultMap>
   <sql id="Base_Column_List">
     msrID, msrServiceName, msrServiceVersion, msrServiceIp, msrRegistryTime, msrServiceInfo, 
-    createdTime, updatedTime, remark
+    createdTime, updatedTime, remark, msrServiceMethod, msrServicePort
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,12 +31,12 @@
   <insert id="insert" parameterType="com.te.micoservice.model.Micoserviceregistry">
     insert into micoServiceRegistry (msrID, msrServiceName, msrServiceVersion, 
       msrServiceIp, msrRegistryTime, msrServiceInfo, 
-      createdTime, updatedTime, remark
-      )
+      createdTime, updatedTime, remark, 
+      msrServiceMethod, msrServicePort)
     values (#{msrid,jdbcType=INTEGER}, #{msrservicename,jdbcType=VARCHAR}, #{msrserviceversion,jdbcType=VARCHAR}, 
       #{msrserviceip,jdbcType=VARCHAR}, #{msrregistrytime,jdbcType=DATE}, #{msrserviceinfo,jdbcType=VARCHAR}, 
-      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}
-      )
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{msrservicemethod,jdbcType=VARCHAR}, #{msrserviceport,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
     insert into micoServiceRegistry
@@ -66,6 +68,12 @@
       <if test="remark != null">
         remark,
       </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod,
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="msrid != null">
@@ -94,6 +102,12 @@
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        #{msrserviceport,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -124,6 +138,12 @@
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort = #{msrserviceport,jdbcType=INTEGER},
+      </if>
     </set>
     where msrID = #{msrid,jdbcType=INTEGER}
   </update>
@@ -136,7 +156,499 @@
       msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
       createdTime = #{createdtime,jdbcType=DATE},
       updatedTime = #{updatedtime,jdbcType=DATE},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      msrServicePort = #{msrserviceport,jdbcType=INTEGER}
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.te.micoservice.model.Micoserviceregistry">
+    <id column="msrID" jdbcType="INTEGER" property="msrid" />
+    <result column="msrServiceName" jdbcType="VARCHAR" property="msrservicename" />
+    <result column="msrServiceVersion" jdbcType="VARCHAR" property="msrserviceversion" />
+    <result column="msrServiceIp" jdbcType="VARCHAR" property="msrserviceip" />
+    <result column="msrRegistryTime" jdbcType="DATE" property="msrregistrytime" />
+    <result column="msrServiceInfo" jdbcType="VARCHAR" property="msrserviceinfo" />
+    <result column="createdTime" jdbcType="DATE" property="createdtime" />
+    <result column="updatedTime" jdbcType="DATE" property="updatedtime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="msrServiceMethod" jdbcType="VARCHAR" property="msrservicemethod" />
+    <result column="msrServicePort" jdbcType="INTEGER" property="msrserviceport" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msrID, msrServiceName, msrServiceVersion, msrServiceIp, msrRegistryTime, msrServiceInfo, 
+    createdTime, updatedTime, remark, msrServiceMethod, msrServicePort
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry (msrID, msrServiceName, msrServiceVersion, 
+      msrServiceIp, msrRegistryTime, msrServiceInfo, 
+      createdTime, updatedTime, remark, 
+      msrServiceMethod, msrServicePort)
+    values (#{msrid,jdbcType=INTEGER}, #{msrservicename,jdbcType=VARCHAR}, #{msrserviceversion,jdbcType=VARCHAR}, 
+      #{msrserviceip,jdbcType=VARCHAR}, #{msrregistrytime,jdbcType=DATE}, #{msrserviceinfo,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{msrservicemethod,jdbcType=VARCHAR}, #{msrserviceport,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        msrID,
+      </if>
+      <if test="msrservicename != null">
+        msrServiceName,
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion,
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp,
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime,
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo,
+      </if>
+      <if test="createdtime != null">
+        createdTime,
+      </if>
+      <if test="updatedtime != null">
+        updatedTime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod,
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        #{msrid,jdbcType=INTEGER},
+      </if>
+      <if test="msrservicename != null">
+        #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        #{msrserviceport,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    <set>
+      <if test="msrservicename != null">
+        msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        createdTime = #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        updatedTime = #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort = #{msrserviceport,jdbcType=INTEGER},
+      </if>
+    </set>
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    set msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      createdTime = #{createdtime,jdbcType=DATE},
+      updatedTime = #{updatedtime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      msrServicePort = #{msrserviceport,jdbcType=INTEGER}
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.te.micoservice.model.Micoserviceregistry">
+    <id column="msrID" jdbcType="INTEGER" property="msrid" />
+    <result column="msrServiceName" jdbcType="VARCHAR" property="msrservicename" />
+    <result column="msrServiceVersion" jdbcType="VARCHAR" property="msrserviceversion" />
+    <result column="msrServiceIp" jdbcType="VARCHAR" property="msrserviceip" />
+    <result column="msrRegistryTime" jdbcType="DATE" property="msrregistrytime" />
+    <result column="msrServiceInfo" jdbcType="VARCHAR" property="msrserviceinfo" />
+    <result column="createdTime" jdbcType="DATE" property="createdtime" />
+    <result column="updatedTime" jdbcType="DATE" property="updatedtime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="msrServiceMethod" jdbcType="VARCHAR" property="msrservicemethod" />
+    <result column="msrServicePort" jdbcType="INTEGER" property="msrserviceport" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msrID, msrServiceName, msrServiceVersion, msrServiceIp, msrRegistryTime, msrServiceInfo, 
+    createdTime, updatedTime, remark, msrServiceMethod, msrServicePort
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry (msrID, msrServiceName, msrServiceVersion, 
+      msrServiceIp, msrRegistryTime, msrServiceInfo, 
+      createdTime, updatedTime, remark, 
+      msrServiceMethod, msrServicePort)
+    values (#{msrid,jdbcType=INTEGER}, #{msrservicename,jdbcType=VARCHAR}, #{msrserviceversion,jdbcType=VARCHAR}, 
+      #{msrserviceip,jdbcType=VARCHAR}, #{msrregistrytime,jdbcType=DATE}, #{msrserviceinfo,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{msrservicemethod,jdbcType=VARCHAR}, #{msrserviceport,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        msrID,
+      </if>
+      <if test="msrservicename != null">
+        msrServiceName,
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion,
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp,
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime,
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo,
+      </if>
+      <if test="createdtime != null">
+        createdTime,
+      </if>
+      <if test="updatedtime != null">
+        updatedTime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod,
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        #{msrid,jdbcType=INTEGER},
+      </if>
+      <if test="msrservicename != null">
+        #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        #{msrserviceport,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    <set>
+      <if test="msrservicename != null">
+        msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        createdTime = #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        updatedTime = #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceport != null">
+        msrServicePort = #{msrserviceport,jdbcType=INTEGER},
+      </if>
+    </set>
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    set msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      createdTime = #{createdtime,jdbcType=DATE},
+      updatedTime = #{updatedtime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      msrServicePort = #{msrserviceport,jdbcType=INTEGER}
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.te.micoservice.model.Micoserviceregistry">
+    <id column="msrID" jdbcType="INTEGER" property="msrid" />
+    <result column="msrServiceName" jdbcType="VARCHAR" property="msrservicename" />
+    <result column="msrServiceVersion" jdbcType="VARCHAR" property="msrserviceversion" />
+    <result column="msrServiceIp" jdbcType="VARCHAR" property="msrserviceip" />
+    <result column="msrRegistryTime" jdbcType="DATE" property="msrregistrytime" />
+    <result column="msrServiceInfo" jdbcType="VARCHAR" property="msrserviceinfo" />
+    <result column="createdTime" jdbcType="DATE" property="createdtime" />
+    <result column="updatedTime" jdbcType="DATE" property="updatedtime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="msrServiceMethod" jdbcType="VARCHAR" property="msrservicemethod" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msrID, msrServiceName, msrServiceVersion, msrServiceIp, msrRegistryTime, msrServiceInfo, 
+    createdTime, updatedTime, remark, msrServiceMethod
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </select>
+  <select id="getList" parameterType="com.te.micoservice.model.Micoserviceregistry" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from micoServiceRegistry
+    where 1=1
+    <if test="msrid &gt; 0">
+      AND msrID = #{msrid}
+    </if>
+    <if test="msrservicename != null and msrservicename !=''">
+      AND msrServiceName= #{msrservicename}
+    </if>
+    <if test="msrserviceversion != null and msrserviceversion !=''">
+      AND msrServiceVersion= #{msrserviceversion}
+    </if>
+    <if test="msrservicemethod != null and msrservicemethod !=''">
+      AND msrServiceMethod= #{msrservicemethod}
+    </if>
+    <if test="msrserviceip!=null and msrserviceip!=''">
+      AND msrServiceIp= #{msrserviceip}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from micoServiceRegistry
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry (msrID, msrServiceName, msrServiceVersion, 
+      msrServiceIp, msrRegistryTime, msrServiceInfo, 
+      createdTime, updatedTime, remark, 
+      msrServiceMethod)
+    values (#{msrid,jdbcType=INTEGER}, #{msrservicename,jdbcType=VARCHAR}, #{msrserviceversion,jdbcType=VARCHAR}, 
+      #{msrserviceip,jdbcType=VARCHAR}, #{msrregistrytime,jdbcType=DATE}, #{msrserviceinfo,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{msrservicemethod,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    insert into micoServiceRegistry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        msrID,
+      </if>
+      <if test="msrservicename != null">
+        msrServiceName,
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion,
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp,
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime,
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo,
+      </if>
+      <if test="createdtime != null">
+        createdTime,
+      </if>
+      <if test="updatedtime != null">
+        updatedTime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msrid != null">
+        #{msrid,jdbcType=INTEGER},
+      </if>
+      <if test="msrservicename != null">
+        #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    <set>
+      <if test="msrservicename != null">
+        msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceversion != null">
+        msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      </if>
+      <if test="msrserviceip != null">
+        msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      </if>
+      <if test="msrregistrytime != null">
+        msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      </if>
+      <if test="msrserviceinfo != null">
+        msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdtime != null">
+        createdTime = #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null">
+        updatedTime = #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="msrservicemethod != null">
+        msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where msrID = #{msrid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.te.micoservice.model.Micoserviceregistry">
+    update micoServiceRegistry
+    set msrServiceName = #{msrservicename,jdbcType=VARCHAR},
+      msrServiceVersion = #{msrserviceversion,jdbcType=VARCHAR},
+      msrServiceIp = #{msrserviceip,jdbcType=VARCHAR},
+      msrRegistryTime = #{msrregistrytime,jdbcType=DATE},
+      msrServiceInfo = #{msrserviceinfo,jdbcType=VARCHAR},
+      createdTime = #{createdtime,jdbcType=DATE},
+      updatedTime = #{updatedtime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      msrServiceMethod = #{msrservicemethod,jdbcType=VARCHAR}
     where msrID = #{msrid,jdbcType=INTEGER}
   </update>
 </mapper>

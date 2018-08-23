@@ -56,5 +56,9 @@ public class PublicConsts {
         public static final String loadJobPath = "com.te.micoservice.common.serviceagent.job.";
 
     }
+
+    public class  MicoSer{
+        public static final int virtualNum=100;
+    }
 }
 

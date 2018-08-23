@@ -10,17 +10,11 @@
 		   http://www.springframework.org/schema/mvc
 		   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <context:component-scan base-package="com.te.micoservice">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
     <mvc:annotation-driven>
-        <mvc:message-converters register-defaults="true">
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <constructor-arg value="UTF-8"/>
-            </bean>
-        </mvc:message-converters>
     </mvc:annotation-driven>
     <mvc:default-servlet-handler/>
     <bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -33,15 +27,7 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="properties" ref="properties"></property>
     </bean>
-    <mvc:annotation-driven>
-        <mvc:message-converters register-defaults="true">
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <constructor-arg value="UTF-8"/>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
     <!--设置配置方案 -->
-    <mvc:annotation-driven/>
     <!--使用默认的Servlet来响应静态文件-->
     <mvc:default-servlet-handler/>
 

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/te-micoserver.iml" filepath="$PROJECT_DIR$/te-micoserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/te-micoserver-clientsdk/te-micoserver-clientsdk.iml" filepath="$PROJECT_DIR$/te-micoserver-clientsdk/te-micoserver-clientsdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/te-micoserver-common/te-micoserver-common.iml" filepath="$PROJECT_DIR$/te-micoserver-common/te-micoserver-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/te-micoserver-dao/te-micoserver-dao.iml" filepath="$PROJECT_DIR$/te-micoserver-dao/te-micoserver-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/te-micoserver-model/te-micoserver-model.iml" filepath="$PROJECT_DIR$/te-micoserver-model/te-micoserver-model.iml" />

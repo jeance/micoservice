@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="te-micoserver-clientsdk" />
         <module name="te-micoserver-common" />
         <module name="te-micoserver-dao" />
         <module name="te-micoserver-model" />
@@ -18,6 +19,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="te-micoserver" target="1.8" />
+      <module name="te-micoserver-clientsdk" target="1.8" />
       <module name="te-micoserver-common" target="1.8" />
       <module name="te-micoserver-dao" target="1.8" />
       <module name="te-micoserver-model" target="1.8" />

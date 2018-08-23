@@ -6,6 +6,8 @@ import com.te.micoservice.model.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by cxj4842 on 2018/7/9.
  */
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MicoSerRegistryImpl implements  IMicoSerRigistryService {
 
-//    @Autowired
+    @Autowired
   private  MicoserviceregistryMapper micoserviceregistryMapper;
 
 
@@ -36,5 +38,10 @@ public class MicoSerRegistryImpl implements  IMicoSerRigistryService {
     @Override
     public Micoserviceregistry getEntityById(long id) {
         return null;
+    }
+
+    @Override
+    public List<Micoserviceregistry> selectByPrimaryKey(Micoserviceregistry record) {
+        return micoserviceregistryMapper.selectByPrimaryKey(record);
     }
 }

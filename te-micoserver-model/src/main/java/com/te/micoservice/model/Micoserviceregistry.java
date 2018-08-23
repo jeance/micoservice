@@ -21,6 +21,10 @@ public class Micoserviceregistry {
 
     private String remark;
 
+    private String msrservicemethod;
+
+    private Integer msrserviceport;
+
     public Integer getMsrid() {
         return msrid;
     }
@@ -91,5 +95,21 @@ public class Micoserviceregistry {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getMsrservicemethod() {
+        return msrservicemethod;
+    }
+
+    public void setMsrservicemethod(String msrservicemethod) {
+        this.msrservicemethod = msrservicemethod;
+    }
+
+    public Integer getMsrserviceport() {
+        return msrserviceport;
+    }
+
+    public void setMsrserviceport(Integer msrserviceport) {
+        this.msrserviceport = msrserviceport;
     }
 }
